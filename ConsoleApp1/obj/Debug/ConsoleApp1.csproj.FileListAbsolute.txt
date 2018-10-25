@@ -1,0 +1,7 @@
+C:\Users\sante\source\repos\METROENGINE\ConsoleApp1\bin\Debug\ConsoleApp1.exe.config
+C:\Users\sante\source\repos\METROENGINE\ConsoleApp1\bin\Debug\ConsoleApp1.exe
+C:\Users\sante\source\repos\METROENGINE\ConsoleApp1\bin\Debug\ConsoleApp1.pdb
+C:\Users\sante\source\repos\METROENGINE\ConsoleApp1\obj\Debug\ConsoleApp1.csprojAssemblyReference.cache
+C:\Users\sante\source\repos\METROENGINE\ConsoleApp1\obj\Debug\ConsoleApp1.csproj.CoreCompileInputs.cache
+C:\Users\sante\source\repos\METROENGINE\ConsoleApp1\obj\Debug\ConsoleApp1.exe
+C:\Users\sante\source\repos\METROENGINE\ConsoleApp1\obj\Debug\ConsoleApp1.pdb
