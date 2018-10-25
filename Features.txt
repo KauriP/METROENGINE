@@ -1,0 +1,16 @@
+METROENGINE
+  Pixel-based world
+    Playable, stylized physics
+  Seamless level loading
+  Advanced storytelling tools
+    Branching
+      Dialogue
+      Narrative
+      Set pieces
+      Cinematics
+  Light-weight
+  Easy-to-use screen effects
+  Animation
+    Frame-by-frame
+    Dynamic
+  Component-based game objects
