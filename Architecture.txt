@@ -1,0 +1,22 @@
+METROENGINE
+  Time
+  Main loops
+    Input
+      Get/Track
+      Process
+    Game
+      State
+        PreUpdate
+        PostUpdate
+      World
+        Physics
+        Update1
+        Update2
+        Update3
+    Graphics
+      DrawWorld
+      DrawFine
+      Display
+    Audio
+      Process
+      Play
