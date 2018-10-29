@@ -1,0 +1,29 @@
+GameLoop
+
+Logic, Physics, Game state etc.
+
+Data available for everything inside, stored from loop to loop:
+
+GameObject.transform
+	position (VECTOR2 (INT))
+	subPosition (VECTOR2 (FLOAT))
+	scale (INT)
+	rotation (INT)
+
+DisplayComponent
+	sprite (IMG)
+	material
+	depth (INT)
+
+
+
+Functions in single loop:
+
+Input.Process()
+GameState.PreUpdate()
+GameWorld.Update1()
+GameWorld.Update2()
+GameWorld.Update3()
+GameState.PostUpdate()
+Graphics.RequestDraw()
+Sound.RequestPlay()
