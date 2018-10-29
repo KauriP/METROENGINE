@@ -24,7 +24,7 @@ namespace MetroEngine
 
         private void button1_Click(object sender, EventArgs e)
         {
-
+            Console.WriteLine("Onko konsolia?");
         }
     }
 }
