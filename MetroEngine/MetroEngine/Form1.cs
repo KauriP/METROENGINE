@@ -16,5 +16,18 @@ namespace MetroEngine
         {
             InitializeComponent();
         }
+<<<<<<< HEAD
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Console.WriteLine("Onko konsolia?");
+        }
+=======
+>>>>>>> e850845ecac16a1852e8749a28c38d017040ebf6
     }
 }
