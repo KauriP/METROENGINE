@@ -26,4 +26,5 @@ public class Inputs
         action4 = (KeyCode)System.Enum.Parse(typeof(KeyCode), Keys.GetString("action4Key", "4"));
         action5 = (KeyCode)System.Enum.Parse(typeof(KeyCode), Keys.GetString("action5Key", "5"));
     }
+
 }
