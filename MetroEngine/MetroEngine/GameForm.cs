@@ -10,21 +10,16 @@ using System.Windows.Forms;
 
 namespace MetroEngine
 {
-    public partial class Form1 : Form
+    public partial class GameForm : Form
     {
-        public Form1()
+        public GameForm()
         {
             InitializeComponent();
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        private void GameForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            Console.WriteLine("Onko konsolia?");
         }
     }
 }

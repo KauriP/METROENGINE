@@ -1,4 +1,4 @@
-﻿using System;
+﻿/*using System;
 
 public class Inputs
 {
@@ -27,4 +27,4 @@ public class Inputs
         action5 = (KeyCode)System.Enum.Parse(typeof(KeyCode), Keys.GetString("action5Key", "5"));
     }
 
-}
+}*/
