@@ -19,7 +19,7 @@ namespace MetroEngine
 
         private void GameForm_FormClosed(object sender, FormClosedEventArgs e)
         {
-            Program.ShutDown();
+            
         }
     }
 }
