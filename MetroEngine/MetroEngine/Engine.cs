@@ -11,6 +11,11 @@ namespace MetroEngine
 {
     public class Engine
     {
+        /*
+         Input input;
+         Luokka, josta voisi saada näppäinten, näppäimistä tehtyjen akselien(, ja mahdollisesti vielä niistä prosessoitujen toimintojen) arvot
+         +hiiri
+             */
         GameForm gameForm;
         //Timer for all loops
         Stopwatch loopTimer;
@@ -20,10 +25,6 @@ namespace MetroEngine
         Task logicTask;
         LogicLoop logicLoop;
         float logicLoopInterval;
-
-        /// <summary>
-        /// The main entry point for the application.
-        /// </summary>
 
         public Engine(ref GameForm inputGameForm)
         {
