@@ -24,7 +24,7 @@ namespace MetroEngine
                 //vähäsen huono tapa ehkä
                 while (0.01f < timer.Elapsed.TotalMilliseconds % interval && timer.Elapsed.TotalMilliseconds % interval < interval-0.01f);
                 DoUpdate1();
-                Console.WriteLine(timer.Elapsed.TotalMilliseconds % interval);
+
                 //pitäisi saada tämä hoitamaan ajoitus
                 Thread.Sleep((int)(interval - (timer.Elapsed.TotalMilliseconds % interval)));
                 //Thread.Sleep(10);
