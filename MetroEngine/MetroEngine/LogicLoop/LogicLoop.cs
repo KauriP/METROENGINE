@@ -26,8 +26,8 @@ namespace MetroEngine
                 DoUpdate1();
 
                 //pitäisi saada tämä hoitamaan ajoitus
-                Thread.Sleep((int)(interval - (timer.Elapsed.TotalMilliseconds % interval)));
-                //Thread.Sleep(10);
+                //Thread.Sleep((int)(interval - (timer.Elapsed.TotalMilliseconds % interval)));
+                //Thread.Sleep(1);
             }
         }
 
