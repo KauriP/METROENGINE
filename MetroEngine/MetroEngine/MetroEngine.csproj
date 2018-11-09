@@ -54,12 +54,12 @@
       <DependentUpon>GameForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Inputs.cs" />
-    <Compile Include="LogicLoop\GameObjects\Component.cs" />
-    <Compile Include="LogicLoop\GameObjects\GameObject.cs" />
-    <Compile Include="LogicLoop\GameObjects\Transform.cs" />
+    <Compile Include="GameObjects\Component.cs" />
+    <Compile Include="GameObjects\GameObject.cs" />
+    <Compile Include="GameObjects\Transform.cs" />
     <Compile Include="LogicLoop\LogicLoop.cs" />
-    <Compile Include="LogicLoop\GameObjects\Components\PhysicsComponent.cs" />
-    <Compile Include="LogicLoop\GameObjects\Components\UpdateComponent.cs" />
+    <Compile Include="GameObjects\Components\PhysicsComponent.cs" />
+    <Compile Include="GameObjects\Components\UpdateComponent.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TestNosing.cs" />
