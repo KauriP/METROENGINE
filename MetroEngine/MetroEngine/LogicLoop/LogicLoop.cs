@@ -22,11 +22,11 @@ namespace MetroEngine
             while(true)
             {
                 //vähäsen huono tapa ehkä
-                while (0.01f < timer.Elapsed.TotalMilliseconds % interval && timer.Elapsed.TotalMilliseconds % interval < interval-0.01f);
+                //while (0.01f < timer.Elapsed.TotalMilliseconds % interval && timer.Elapsed.TotalMilliseconds % interval < interval-0.01f);
                 DoUpdate1();
 
                 //pitäisi saada tämä hoitamaan ajoitus
-                //Thread.Sleep((int)(interval - (timer.Elapsed.TotalMilliseconds % interval)));
+                Thread.Sleep(1+(int)(interval - ((timer.Elapsed.TotalMilliseconds-1000) % interval)));
                 //Thread.Sleep(1);
             }
         }
@@ -34,6 +34,7 @@ namespace MetroEngine
         private void DoUpdate1()
         {
             Console.WriteLine("Done update1. Interval was {0}.", Program.nosing.CheckElapsedTime1());
+            //Program.nosing.TestDraw();
         }
     }
 }

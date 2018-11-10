@@ -60,6 +60,7 @@
     <Compile Include="LogicLoop\LogicLoop.cs" />
     <Compile Include="GameObjects\Components\PhysicsComponent.cs" />
     <Compile Include="GameObjects\Components\UpdateComponent.cs" />
+    <Compile Include="Physics\Physics.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TestNosing.cs" />
