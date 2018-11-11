@@ -21,5 +21,10 @@ namespace MetroEngine
         {
             
         }
+
+        public void DebugDraw(Bitmap bitmap)
+        {
+            this.BackgroundImage = bitmap;
+        }
     }
 }
