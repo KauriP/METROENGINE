@@ -25,6 +25,7 @@ namespace MetroEngine
             //Starting up
             gameForm = new GameForm();
             engine = new Engine(ref gameForm);
+            nosing.form = gameForm;
             Application.Run(gameForm);
         }
     }
