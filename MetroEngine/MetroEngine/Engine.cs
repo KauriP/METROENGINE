@@ -26,10 +26,16 @@ namespace MetroEngine
         LogicLoop logicLoop;
         float logicLoopInterval;
 
+        //Objekti- ja komponentttilistat
+        List<Component> components;
+        Dictionary<String, GameObject> gameObjects;
+
         public Engine(ref GameForm inputGameForm)
         {
             gameForm = inputGameForm;
             StartUp();
+            components = new List<Component>();
+            gameObjects = new Dictionary<String, GameObject>();
         }
 
         void StartUp()
