@@ -10,9 +10,13 @@ namespace MetroEngine
 {
     class LogicLoop
     {
-        public LogicLoop ()
-        {
+        Dictionary<String, GameObject> gameObjects;
+        List<UpdateComponent> updateComponents;
 
+        public LogicLoop (ref Dictionary<String, GameObject> tempGameObjects, ref List<UpdateComponent> tempUpdateComponents)
+        {
+            gameObjects = tempGameObjects;
+            updateComponents = tempUpdateComponents;
         }
 
         //tuo ref pitäisi olla in, mutta ei jonkin takia toimi (ref, in, out)
@@ -33,8 +37,27 @@ namespace MetroEngine
 
         private void DoUpdate1()
         {
+            foreach(UpdateComponent component in updateComponents)
+            {
+                component.Update1();
+            }
             Console.WriteLine("Done update1. Interval was {0}.", Program.nosing.CheckElapsedTime1());
-            //Program.nosing.TestDraw();
+        }
+
+        private void DoUpdate2()
+        {
+            foreach (UpdateComponent component in updateComponents)
+            {
+                component.Update2();
+            }
+        }
+
+        private void DoUpdate3()
+        {
+            foreach (UpdateComponent component in updateComponents)
+            {
+                component.Update3();
+            }
         }
     }
 }

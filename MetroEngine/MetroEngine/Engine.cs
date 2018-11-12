@@ -27,14 +27,14 @@ namespace MetroEngine
         float logicLoopInterval;
 
         //Objekti- ja komponentttilistat
-        List<Component> components;
+        List<UpdateComponent> updateComponents;
         Dictionary<String, GameObject> gameObjects;
 
         public Engine(ref GameForm inputGameForm)
         {
             gameForm = inputGameForm;
             StartUp();
-            components = new List<Component>();
+            updateComponents = new List<UpdateComponent>();
             gameObjects = new Dictionary<String, GameObject>();
         }
 
@@ -45,7 +45,7 @@ namespace MetroEngine
 
             logicExitTokenSource = new CancellationTokenSource();
             logicExitToken = logicExitTokenSource.Token;
-            logicLoop = new LogicLoop();
+            logicLoop = new LogicLoop(ref gameObjects, ref updateComponents);
             logicLoopInterval = 16.6667f;
 
             logicTask = new Task(() => logicLoop.Infinite(ref loopTimer, logicLoopInterval), logicExitToken, TaskCreationOptions.LongRunning);
@@ -69,6 +69,13 @@ namespace MetroEngine
         void StopLoops()
         {
 
+        }
+
+        //TESTAUSTA
+        void Testaus()
+        {
+            GameObject peliobjekti1 = new GameObject();
+            //gameObjects.Add(peliobjekti1);
         }
     }
 }

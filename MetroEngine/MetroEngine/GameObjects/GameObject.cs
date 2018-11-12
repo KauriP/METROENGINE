@@ -9,10 +9,16 @@ namespace MetroEngine
     class GameObject
     {
         List<Component> components;
+        Transform transform;
+
         public GameObject()
         {
             components = new List<Component>();
-            Transform transform;
+        }
+        
+        public void AddComponent(Component component)
+        {
+            components.Add(component);
         }
     }
 }

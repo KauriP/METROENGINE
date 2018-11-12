@@ -26,5 +26,10 @@ namespace MetroEngine
         {
             this.BackgroundImage = bitmap;
         }
+
+        private void GameForm_KeyDown(object sender, KeyEventArgs e)
+        {
+
+        }
     }
 }
