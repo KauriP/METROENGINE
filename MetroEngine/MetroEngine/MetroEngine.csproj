@@ -53,10 +53,11 @@
     <Compile Include="GameForm.Designer.cs">
       <DependentUpon>GameForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Inputs.cs" />
     <Compile Include="GameObjects\Component.cs" />
     <Compile Include="GameObjects\GameObject.cs" />
     <Compile Include="GameObjects\Transform.cs" />
+    <Compile Include="Inputs\InputManager.cs" />
+    <Compile Include="Inputs\Keys.cs" />
     <Compile Include="LogicLoop\LogicLoop.cs" />
     <Compile Include="GameObjects\Components\PhysicsComponent.cs" />
     <Compile Include="GameObjects\Components\UpdateComponent.cs" />
