@@ -30,6 +30,8 @@ namespace MetroEngine
         List<UpdateComponent> updateComponents;
         Dictionary<String, GameObject> gameObjects;
 
+        long gameObjectNameCounter;
+
         public Engine(ref GameForm inputGameForm)
         {
             gameForm = inputGameForm;
@@ -51,6 +53,9 @@ namespace MetroEngine
             logicTask = new Task(() => logicLoop.Infinite(ref loopTimer, logicLoopInterval), logicExitToken, TaskCreationOptions.LongRunning);
 
             Console.WriteLine("Starting up");
+
+
+
             StartLoops();
         }
 
@@ -71,6 +76,21 @@ namespace MetroEngine
 
         }
 
+        string AddGameObject(GameObject gameObject)
+        {
+            string newName = "GO_" + (gameObjects.Count - 1).ToString();
+            return AddGameObject(gameObject, newName);
+        }
+
+        string AddGameObject(GameObject gameObject, string name)
+        {
+            if(gameObjects.ContainsKey(name)) {
+                string newName = name + "_1";
+                return AddGameObject(gameObject, newName);
+            }
+            gameObjects.Add(name, gameObject);
+            return name;
+        }
         //TESTAUSTA
         void Testaus()
         {
