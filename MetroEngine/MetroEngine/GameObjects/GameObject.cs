@@ -19,6 +19,7 @@ namespace MetroEngine
         public void AddComponent(Component component)
         {
             components.Add(component);
+
         }
     }
 }

@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DevComponents\TestBehaviour.cs" />
     <Compile Include="Engine.cs" />
     <Compile Include="GameForm.cs">
       <SubType>Form</SubType>

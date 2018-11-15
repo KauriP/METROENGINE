@@ -8,7 +8,17 @@ namespace MetroEngine
 {
     class UpdateComponent : Component
     {
-        void Update1()
+        public void Update1()
+        {
+
+        }
+
+        public void Update2()
+        {
+
+        }
+
+        public void Update3()
         {
 
         }

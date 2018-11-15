@@ -30,7 +30,7 @@ namespace MetroEngine
         List<UpdateComponent> updateComponents;
         Dictionary<String, GameObject> gameObjects;
 
-        long gameObjectNameCounter;
+        //long gameObjectNameCounter;
 
         public Engine(ref GameForm inputGameForm)
         {
@@ -42,6 +42,11 @@ namespace MetroEngine
 
         void StartUp()
         {
+            gameObjects = new Dictionary<string, GameObject>();
+            updateComponents = new List<UpdateComponent>();
+
+            Testaus();
+
             loopTimer = new Stopwatch();
 
 
@@ -95,7 +100,10 @@ namespace MetroEngine
         void Testaus()
         {
             GameObject peliobjekti1 = new GameObject();
-            //gameObjects.Add(peliobjekti1);
+            UpdateComponent testiKomponentti = new TestBehaviour("Hello world!");
+            peliobjekti1.AddComponent(testiKomponentti);
+            updateComponents.Add(testiKomponentti);
+            AddGameObject(peliobjekti1);
         }
     }
 }
