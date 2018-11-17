@@ -35,7 +35,7 @@ namespace MetroEngine
 
         private void DoUpdate1()
         {
-            foreach(UpdateComponent component in data.updateComponents)
+            foreach(UpdateComponent component in data.GetUpdateComponents())
             {
                 component.Update1();
             }
@@ -44,7 +44,7 @@ namespace MetroEngine
 
         private void DoUpdate2()
         {
-            foreach (UpdateComponent component in data.updateComponents)
+            foreach (UpdateComponent component in data.GetUpdateComponents())
             {
                 component.Update2();
             }
@@ -52,7 +52,7 @@ namespace MetroEngine
 
         private void DoUpdate3()
         {
-            foreach (UpdateComponent component in data.updateComponents)
+            foreach (UpdateComponent component in data.GetUpdateComponents())
             {
                 component.Update3();
             }
