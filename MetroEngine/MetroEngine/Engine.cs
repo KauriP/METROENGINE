@@ -27,8 +27,7 @@ namespace MetroEngine
         float logicLoopInterval;
 
         //Objekti- ja komponentttilistat
-        List<UpdateComponent> updateComponents;
-        Dictionary<String, GameObject> gameObjects;
+        GameData data;
 
         //Unique gameobject names
         long gameObjectNameCounter;
@@ -37,14 +36,11 @@ namespace MetroEngine
         {
             gameForm = inputGameForm;
             StartUp();
-            updateComponents = new List<UpdateComponent>();
-            gameObjects = new Dictionary<String, GameObject>();
         }
 
         void StartUp()
         {
-            gameObjects = new Dictionary<string, GameObject>();
-            updateComponents = new List<UpdateComponent>();
+            data = new GameData();
 
             gameObjectNameCounter = 0;
 
@@ -63,7 +59,7 @@ namespace MetroEngine
 
             logicExitTokenSource = new CancellationTokenSource();
             logicExitToken = logicExitTokenSource.Token;
-            logicLoop = new LogicLoop(ref gameObjects, ref updateComponents);
+            logicLoop = new LogicLoop(ref data);
             logicLoopInterval = 16.6667f;
 
             logicTask = new Task(() => logicLoop.Infinite(ref loopTimer, logicLoopInterval), logicExitToken, TaskCreationOptions.LongRunning);
@@ -101,11 +97,11 @@ namespace MetroEngine
 
         string AddGameObject(GameObject gameObject, string name)
         {
-            if(gameObjects.ContainsKey(name)) {
+            if(data.gameObjects.ContainsKey(name)) {
                 string newName = name + "_1";
                 return AddGameObject(gameObject, newName);
             }
-            gameObjects.Add(name, gameObject);
+            data.gameObjects.Add(name, gameObject);
             return name;
         }
         //TESTAUSTA
@@ -114,7 +110,7 @@ namespace MetroEngine
             GameObject peliobjekti1 = new GameObject();
             UpdateComponent testiKomponentti = new TestBehaviour("Hello world!");
             peliobjekti1.AddComponent(testiKomponentti);
-            updateComponents.Add(testiKomponentti);
+            data.updateComponents.Add(testiKomponentti);
             AddGameObject(peliobjekti1);
         }
     }

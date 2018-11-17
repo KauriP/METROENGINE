@@ -48,6 +48,7 @@
   <ItemGroup>
     <Compile Include="DevComponents\TestBehaviour.cs" />
     <Compile Include="Engine.cs" />
+    <Compile Include="GameData.cs" />
     <Compile Include="GameForm.cs">
       <SubType>Form</SubType>
     </Compile>
