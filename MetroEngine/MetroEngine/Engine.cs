@@ -42,13 +42,11 @@ namespace MetroEngine
         void StartUp()
         {
             data = new GameData();
-            
 
             Testaus();
 
             InitializeLogicLoop();
             InitializeDrawLoop();
-            
 
             StartLoops();
         }
@@ -79,6 +77,7 @@ namespace MetroEngine
         void StartLoops()
         {
             loopTimer.Start();
+
             logicTask.Start();
         }
 

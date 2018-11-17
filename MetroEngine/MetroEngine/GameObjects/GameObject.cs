@@ -12,23 +12,33 @@ namespace MetroEngine
         List<Component> components;
         Transform transform;
 
-        public GameObject()
+        public GameObject(Transform transform = null, GameObject parent = null, List<Component> components = null)
         {
-            components = new List<Component>();
+            this.parent = parent;
+            this.transform = transform ?? new Transform(0,0);
+            this.components = components ?? new List<Component>();
+        }
+
+        public void AddComponent(Component component)
+        {
+            components.Add(component);
+        }
+
+        public Component GetComponentByType<T>()
+        {
+            foreach(Component component in components)
+            {
+                if (component is T) return component;
+            }
+            return null;
         }
 
         public IEnumerable<Component> GetComponentsEnumerable()
         {
-            foreach(Component component in components)
+            foreach (Component component in components)
             {
                 yield return component;
             }
-        }
-        
-        public void AddComponent(Component component)
-        {
-            components.Add(component);
-
         }
     }
 }
