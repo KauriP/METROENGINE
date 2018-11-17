@@ -10,13 +10,11 @@ namespace MetroEngine
 {
     class LogicLoop
     {
-        Dictionary<String, GameObject> gameObjects;
-        List<UpdateComponent> updateComponents;
+        GameData data;
 
-        public LogicLoop (ref Dictionary<String, GameObject> tempGameObjects, ref List<UpdateComponent> tempUpdateComponents)
+        public LogicLoop (ref GameData data)
         {
-            gameObjects = tempGameObjects;
-            updateComponents = tempUpdateComponents;
+            this.data = data;
         }
 
         //tuo ref pitäisi olla in, mutta ei jonkin takia toimi (ref, in, out)
@@ -37,7 +35,7 @@ namespace MetroEngine
 
         private void DoUpdate1()
         {
-            foreach(UpdateComponent component in updateComponents)
+            foreach(UpdateComponent component in data.GetUpdateComponents())
             {
                 component.Update1();
             }
@@ -46,7 +44,7 @@ namespace MetroEngine
 
         private void DoUpdate2()
         {
-            foreach (UpdateComponent component in updateComponents)
+            foreach (UpdateComponent component in data.GetUpdateComponents())
             {
                 component.Update2();
             }
@@ -54,7 +52,7 @@ namespace MetroEngine
 
         private void DoUpdate3()
         {
-            foreach (UpdateComponent component in updateComponents)
+            foreach (UpdateComponent component in data.GetUpdateComponents())
             {
                 component.Update3();
             }

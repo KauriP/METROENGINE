@@ -21,10 +21,6 @@ namespace MetroEngine
     {
         Vector2Int position;
         Vector2 subPosition;
-        /// <summary>
-        /// 0-999 foreground, 1000-1999 midground(default), 2000-2999 background, 3000-3999 backbackground
-        /// </summary>
-        int zDepth;
 
         /// <summary>
         /// %4= 0 - up, 1 - right, 2 - down, 3 - left 
