@@ -31,5 +31,10 @@ namespace MetroEngine
         {
 
         }
+
+        private void GameForm_KeyUp(object sender, KeyEventArgs e)
+        {
+
+        }
     }
 }
