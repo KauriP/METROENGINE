@@ -27,34 +27,56 @@ namespace MetroEngine
         float logicLoopInterval;
 
         //Objekti- ja komponentttilistat
-        List<Component> components;
+        List<UpdateComponent> updateComponents;
         Dictionary<String, GameObject> gameObjects;
+
+        //Unique gameobject names
+        long gameObjectNameCounter;
 
         public Engine(ref GameForm inputGameForm)
         {
             gameForm = inputGameForm;
             StartUp();
-            components = new List<Component>();
+            updateComponents = new List<UpdateComponent>();
             gameObjects = new Dictionary<String, GameObject>();
         }
 
         void StartUp()
         {
-            loopTimer = new Stopwatch();
+            gameObjects = new Dictionary<string, GameObject>();
+            updateComponents = new List<UpdateComponent>();
 
+            gameObjectNameCounter = 0;
+
+            Testaus();
+
+            InitializeLogicLoop();
+            InitializeDrawLoop();
+            
+
+            StartLoops();
+        }
+
+        void InitializeLogicLoop()
+        {
+            loopTimer = new Stopwatch();
 
             logicExitTokenSource = new CancellationTokenSource();
             logicExitToken = logicExitTokenSource.Token;
-            logicLoop = new LogicLoop();
+            logicLoop = new LogicLoop(ref gameObjects, ref updateComponents);
             logicLoopInterval = 16.6667f;
 
             logicTask = new Task(() => logicLoop.Infinite(ref loopTimer, logicLoopInterval), logicExitToken, TaskCreationOptions.LongRunning);
 
-            Console.WriteLine("Starting up");
-            StartLoops();
+            Console.WriteLine("Starting up logic loop.");
         }
 
-        public void ShutDown()
+        void InitializeDrawLoop()
+        {
+
+        }
+
+        void ShutDown()
         {
             StopLoops();
         }
@@ -69,6 +91,31 @@ namespace MetroEngine
         void StopLoops()
         {
 
+        }
+
+        string AddGameObject(GameObject gameObject)
+        {
+            string newName = "GO_" + (gameObjectNameCounter++).ToString();
+            return AddGameObject(gameObject, newName);
+        }
+
+        string AddGameObject(GameObject gameObject, string name)
+        {
+            if(gameObjects.ContainsKey(name)) {
+                string newName = name + "_1";
+                return AddGameObject(gameObject, newName);
+            }
+            gameObjects.Add(name, gameObject);
+            return name;
+        }
+        //TESTAUSTA
+        void Testaus()
+        {
+            GameObject peliobjekti1 = new GameObject();
+            UpdateComponent testiKomponentti = new TestBehaviour("Hello world!");
+            peliobjekti1.AddComponent(testiKomponentti);
+            updateComponents.Add(testiKomponentti);
+            AddGameObject(peliobjekti1);
         }
     }
 }
