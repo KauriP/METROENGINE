@@ -26,6 +26,8 @@ namespace MetroEngine
         {
             this.BackgroundImage = bitmap;
         }
+        
+
 
        
     }

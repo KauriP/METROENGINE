@@ -19,7 +19,16 @@ namespace MetroEngine
             private float value;
             public Keys positive;
             public Keys negative;
- 
+
+            
+
+            public static getValue()
+            {
+               
+                return InputAxis.value;
+
+
+            }
             public void RDown(bool positive)
             {
                 down = true;
@@ -54,12 +63,15 @@ namespace MetroEngine
 
             }
         }
-            Dictionary<string, InputAxis> axes = new Dictionary<string, InputAxis>();
+        Dictionary<string, InputAxis> axes = new Dictionary<string, InputAxis>();
 
-
-           // axes.Add("testi", s);
+        public void AddAxes()
+        {
+            axes.Add("nimi", new InputAxis());
         
-
+        
+        
+        }
         public void ReactDown(object sender, KeyEventArgs e)
         {
             foreach ( InputAxis axis in axes.Values)
