@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MetroEngine
 {
-    class DrawComponent
+    class DrawComponent : Component
     {
         //Bitmap sprite?
         Vector2Int offset;

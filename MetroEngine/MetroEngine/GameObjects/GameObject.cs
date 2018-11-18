@@ -21,6 +21,7 @@ namespace MetroEngine
 
         public void AddComponent(Component component)
         {
+            component.SetOwner(this);
             components.Add(component);
         }
 
