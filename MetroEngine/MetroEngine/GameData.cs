@@ -33,6 +33,20 @@ namespace MetroEngine
             }
         }
 
+        public IEnumerable<DrawComponent> GetDrawComponents()
+        {
+            foreach (GameObject gameObject in gameObjects.Values)
+            {
+                foreach (Component component in gameObject.GetComponentsEnumerable())
+                {
+                    if (component is DrawComponent)
+                    {
+                        yield return (DrawComponent)component;
+                    }
+                }
+            }
+        }
+
         public string AddGameObject(GameObject gameObject)
         {
             string newName = "GO_" + (gameObjectNameCounter++).ToString();

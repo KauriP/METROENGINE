@@ -9,5 +9,11 @@ namespace MetroEngine
     class Component
     {
         GameObject owner;
+        public GameObject Owner { get; }
+
+        public void SetOwner(GameObject newOwner)
+        {
+            owner = newOwner;
+        }
     }
 }

@@ -24,15 +24,21 @@ namespace MetroEngine
         Stopwatch loopTimer;
         ///<summary>Object and component lists etc.</summary>
         GameData data;
+
         ///Logic looping task
         CancellationTokenSource logicExitTokenSource;
         CancellationToken logicExitToken;
-
         Task logicTask;
         LogicLoop logicLoop;
 
-        
+        ///Drawing looping taks
+        CancellationTokenSource drawExitTokenSource;
+        CancellationToken drawExitToken;
+        Task drawTask;
+        DrawLoop drawLoop;
 
+
+        
         public Engine(ref GameForm inputGameForm)
         {
             gameForm = inputGameForm;
@@ -42,21 +48,19 @@ namespace MetroEngine
         void StartUp()
         {
             data = new GameData();
-            
 
             Testaus();
 
+            loopTimer = new Stopwatch();
+
             InitializeLogicLoop();
             InitializeDrawLoop();
-            
 
             StartLoops();
         }
 
         void InitializeLogicLoop()
         {
-            loopTimer = new Stopwatch();
-
             logicExitTokenSource = new CancellationTokenSource();
             logicExitToken = logicExitTokenSource.Token;
             logicLoop = new LogicLoop(ref data);
@@ -68,7 +72,13 @@ namespace MetroEngine
 
         void InitializeDrawLoop()
         {
+            drawExitTokenSource = new CancellationTokenSource();
+            drawExitToken = drawExitTokenSource.Token;
+            drawLoop = new DrawLoop(ref data);
 
+            drawTask = new Task(() => drawLoop.Infinite(ref loopTimer, 16.6667f), drawExitToken, TaskCreationOptions.LongRunning);
+
+            Console.WriteLine("Starting up drawing loop.");
         }
 
         void ShutDown()
@@ -79,6 +89,7 @@ namespace MetroEngine
         void StartLoops()
         {
             loopTimer.Start();
+
             logicTask.Start();
         }
 
