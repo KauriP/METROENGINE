@@ -16,16 +16,17 @@ namespace MetroEngine
             private bool positiveheld;
             private bool negativeheld;
             private bool up;
-            private float value;
+            private static float value;
             public Keys positive;
             public Keys negative;
 
             
 
-            public static getValue()
+            public static float GetValue()
             {
-               
-                return InputAxis.value;
+                float result = 0;
+                result = InputAxis.value;
+                return result;
 
 
             }

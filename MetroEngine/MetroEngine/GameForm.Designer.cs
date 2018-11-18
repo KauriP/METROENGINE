@@ -1,4 +1,7 @@
-﻿namespace MetroEngine
+﻿using System;
+using System.Windows.Forms;
+
+namespace MetroEngine
 {
     partial class GameForm
     {
@@ -43,6 +46,8 @@
             this.ResumeLayout(false);
 
         }
+
+       
 
         #endregion
     }

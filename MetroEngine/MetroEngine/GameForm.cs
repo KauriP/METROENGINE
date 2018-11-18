@@ -27,9 +27,17 @@ namespace MetroEngine
         {
             this.BackgroundImage = bitmap;
         }
-        
 
 
-       
+        private void GameForm_KeyUp(object sender, KeyEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void GameForm_KeyDown(object sender, KeyEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
     }
 }
