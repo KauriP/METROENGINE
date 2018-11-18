@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Threading;
 using System.Diagnostics;
+using System.Windows.Forms;
 
 namespace MetroEngine
 {
@@ -16,8 +17,9 @@ namespace MetroEngine
          +hiiri
         */
         /// <summary>Input manager</summary>
-        //InputManager input;
+        InputManager input;
         /// <summary>Game window</summary>
+        GameForm gameForm;
         ///<summary>Timer for all loops</summary>
         Stopwatch loopTimer;
         ///<summary>Object and component lists etc.</summary>
@@ -37,8 +39,9 @@ namespace MetroEngine
 
 
         
-        public Engine()
+        public Engine(ref GameForm inputGameForm)
         {
+            gameForm = inputGameForm;
             StartUp();
         }
 

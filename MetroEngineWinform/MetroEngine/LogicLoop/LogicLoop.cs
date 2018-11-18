@@ -39,7 +39,7 @@ namespace MetroEngine
             {
                 component.Update1();
             }
-            //Console.WriteLine("Done update1. Interval was {0}.", Program.nosing.CheckElapsedTime1());
+            Console.WriteLine("Done update1. Interval was {0}.", Program.nosing.CheckElapsedTime1());
         }
 
         private void DoUpdate2()
