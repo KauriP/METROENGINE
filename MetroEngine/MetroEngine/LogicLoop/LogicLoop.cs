@@ -10,11 +10,15 @@ namespace MetroEngine
 {
     class LogicLoop
     {
+        TestNosing nosing;
+
         GameData data;
 
         public LogicLoop (ref GameData data)
         {
             this.data = data;
+
+            nosing = new TestNosing();
         }
 
         //tuo ref pitäisi olla in, mutta ei jonkin takia toimi (ref, in, out)
@@ -39,7 +43,7 @@ namespace MetroEngine
             {
                 component.Update1();
             }
-            //Console.WriteLine("Done update1. Interval was {0}.", Program.nosing.CheckElapsedTime1());
+            Console.WriteLine("Done update1. Interval was {0}.", nosing.CheckElapsedTime1());
         }
 
         private void DoUpdate2()
