@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Threading;
 using System.Diagnostics;
+using System.Windows.Controls;
 
 namespace MetroEngine
 {
@@ -35,10 +36,13 @@ namespace MetroEngine
         Task drawTask;
         DrawLoop drawLoop;
 
+        MainWindow mainWindow;
+
 
         
-        public Engine()
+        public Engine(MainWindow outImage)
         {
+            this.mainWindow = outImage;
             StartUp();
         }
 
@@ -71,7 +75,7 @@ namespace MetroEngine
         {
             drawExitTokenSource = new CancellationTokenSource();
             drawExitToken = drawExitTokenSource.Token;
-            drawLoop = new DrawLoop(ref data);
+            drawLoop = new DrawLoop(ref data, ref mainWindow);
 
             drawTask = new Task(() => drawLoop.Infinite(ref loopTimer, 16.6667f), drawExitToken, TaskCreationOptions.LongRunning);
 
@@ -88,6 +92,7 @@ namespace MetroEngine
             loopTimer.Start();
 
             logicTask.Start();
+            drawTask.Start();
         }
 
         //pitäis implementoida

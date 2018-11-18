@@ -13,10 +13,9 @@ namespace MetroEngine
     /// </summary>
     public partial class App : Application
     {
-        Engine engine;
         App()
         {
-            engine = new Engine();
+
         }
     }
 }
