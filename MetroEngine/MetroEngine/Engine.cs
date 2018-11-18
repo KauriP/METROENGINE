@@ -66,7 +66,7 @@ namespace MetroEngine
             logicExitToken = logicExitTokenSource.Token;
             logicLoop = new LogicLoop(ref data);
 
-            logicTask = new Task(() => logicLoop.Infinite(ref loopTimer, 16.6667f), logicExitToken, TaskCreationOptions.LongRunning);
+            logicTask = new Task(() => logicLoop.Infinite(ref loopTimer, 16.6667f, logicExitToken), logicExitToken, TaskCreationOptions.LongRunning);
 
             Console.WriteLine("Starting up logic loop.");
         }
@@ -77,12 +77,12 @@ namespace MetroEngine
             drawExitToken = drawExitTokenSource.Token;
             drawLoop = new DrawLoop(ref data, ref mainWindow);
 
-            drawTask = new Task(() => drawLoop.Infinite(ref loopTimer, 16.6667f), drawExitToken, TaskCreationOptions.LongRunning);
+            drawTask = new Task(() => drawLoop.Infinite(ref loopTimer, 16.6667f, drawExitToken), drawExitToken, TaskCreationOptions.LongRunning);
 
             Console.WriteLine("Starting up drawing loop.");
         }
 
-        void ShutDown()
+        public void ShutDown()
         {
             StopLoops();
         }
@@ -98,7 +98,8 @@ namespace MetroEngine
         //pitäis implementoida
         void StopLoops()
         {
-
+            logicExitTokenSource.Cancel();
+            drawExitTokenSource.Cancel();
         }
 
         

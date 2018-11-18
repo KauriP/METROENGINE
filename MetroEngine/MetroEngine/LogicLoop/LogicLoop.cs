@@ -22,10 +22,10 @@ namespace MetroEngine
         }
 
         //tuo ref pitäisi olla in, mutta ei jonkin takia toimi (ref, in, out)
-        public void Infinite(ref Stopwatch timer, float interval)
+        public void Infinite(ref Stopwatch timer, float interval, CancellationToken cancellationToken)
         {
             Console.WriteLine("Infinite logic loop started");
-            while(true)
+            while(!cancellationToken.IsCancellationRequested)
             {
                 //vähäsen huono tapa ehkä
                 //while (0.01f < timer.Elapsed.TotalMilliseconds % interval && timer.Elapsed.TotalMilliseconds % interval < interval-0.01f);
