@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DevComponents\TestBehaviour.cs" />
+    <Compile Include="DrawLoop\DrawLoop.cs" />
     <Compile Include="Engine.cs" />
     <Compile Include="GameData.cs" />
     <Compile Include="GameForm.cs">
@@ -56,6 +57,7 @@
       <DependentUpon>GameForm.cs</DependentUpon>
     </Compile>
     <Compile Include="GameObjects\Component.cs" />
+    <Compile Include="GameObjects\Components\DrawComponent.cs" />
     <Compile Include="GameObjects\GameObject.cs" />
     <Compile Include="GameObjects\Transform.cs" />
     <Compile Include="Inputs\InputKeys.cs" />
@@ -93,7 +95,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="DrawLoop\" />
     <Folder Include="Scripting\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
