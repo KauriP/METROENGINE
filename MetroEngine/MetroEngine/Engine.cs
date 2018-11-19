@@ -14,7 +14,7 @@ namespace MetroEngine
         /// <summary>Game window</summary>
         public MainWindow mainWindow;
         /// <summary>Input manager</summary>
-        public InputManager input;
+        public static InputManager input;
         ///<summary>Timer for all loops</summary>
         Stopwatch loopTimer;
         ///<summary>Object and component lists etc.</summary>
@@ -50,33 +50,33 @@ namespace MetroEngine
             input.AddAxis("testi",System.Windows.Input.Key.A,System.Windows.Input.Key.D);
             loopTimer = new Stopwatch();
 
+            InitializeDrawLoop();
             InitializeLogicLoop();
-            //InitializeDrawLoop();
 
             StartLoops();
         }
 
         void InitializeLogicLoop()
         {
-            logicExitTokenSource = new CancellationTokenSource();
-            logicExitToken = logicExitTokenSource.Token;
             logicLoop = new LogicLoop(ref data, ref drawLoop);
 
+            logicExitTokenSource = new CancellationTokenSource();
+            logicExitToken = logicExitTokenSource.Token;
             logicTask = new Task(() => logicLoop.Infinite(ref loopTimer, 16.6667f, logicExitToken), logicExitToken, TaskCreationOptions.LongRunning);
 
             Console.WriteLine("Starting up logic loop.");
         }
 
-        //void InitializeDrawLoop()
-        //{
-        //    drawExitTokenSource = new CancellationTokenSource();
-        //    drawExitToken = drawExitTokenSource.Token;
-        //    drawLoop = new DrawLoop(ref data, ref mainWindow);
+        void InitializeDrawLoop()
+        {
+            drawLoop = new DrawLoop(ref data, ref mainWindow);
 
-        //    drawTask = new Task(() => drawLoop.Infinite(ref loopTimer, 16.6667f, drawExitToken), drawExitToken, TaskCreationOptions.LongRunning);
+            //drawExitTokenSource = new CancellationTokenSource();
+            //drawExitToken = drawExitTokenSource.Token;
+            //drawTask = new Task(() => drawLoop.Infinite(ref loopTimer, 16.6667f, drawExitToken), drawExitToken, TaskCreationOptions.LongRunning);
 
-        //    Console.WriteLine("Starting up drawing loop.");
-        //}
+            //Console.WriteLine("Starting up drawing loop.");
+        }
 
         public void ShutDown()
         {
@@ -105,6 +105,8 @@ namespace MetroEngine
             GameObject peliobjekti1 = new GameObject();
             UpdateComponent testiKomponentti = new TestBehaviour("Hello world!");
             peliobjekti1.AddComponent(testiKomponentti);
+            DrawComponent testiPiirto = new DrawComponent();
+            peliobjekti1.AddComponent(testiPiirto);
             data.AddGameObject(peliobjekti1);
             input.AddAxis("Testiakseli", System.Windows.Input.Key.B);
         }

@@ -15,12 +15,22 @@ namespace MetroEngine
             X = p1;
             Y = p2;
         }
+
+        public static Vector2Int Zero { get { return new Vector2Int(0, 0); } }
+
+        public static Vector2Int operator +(Vector2Int a, Vector2Int b)
+        {
+            return new Vector2Int(a.X + b.X, a.Y + b.Y);
+        }
     }
 
     class Transform
     {
-        Vector2Int position;
-        Vector2 subPosition;
+        public Vector2Int position;
+        /// <summary>
+        /// Float 0-1; position within pixel
+        /// </summary>
+        public Vector2 subPosition;
 
         /// <summary>
         /// %4= 0 - up, 1 - right, 2 - down, 3 - left 
@@ -33,6 +43,25 @@ namespace MetroEngine
             position.Y = (int)yf;
             subPosition.X = (float)(xf - position.X);
             subPosition.Y = (float)(yf - position.Y);
+        }
+
+
+        //Might not work yet
+        public void Translate(Vector2 move)
+        {
+            subPosition.X += move.X;
+            if (subPosition.X >= 1 || subPosition.X < 0)
+            {
+                position.X += (int)subPosition.X;
+                subPosition.X %= 1;
+            }
+
+            subPosition.Y += move.Y;
+            if (subPosition.Y >= 1 || subPosition.Y < 0)
+            {
+                position.Y += (int)subPosition.Y;
+                subPosition.Y %= 1;
+            }
         }
     }
 }

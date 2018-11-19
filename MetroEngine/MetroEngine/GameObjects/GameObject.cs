@@ -10,7 +10,7 @@ namespace MetroEngine
     {
         GameObject parent;
         List<Component> components;
-        Transform transform;
+        public Transform transform;
 
         public GameObject(Transform transform = null, GameObject parent = null, List<Component> components = null)
         {
