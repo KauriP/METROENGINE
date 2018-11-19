@@ -17,10 +17,6 @@ namespace MetroEngine
         {
 
         }
-
-        public virtual void Update3()
-        {
-
-        }
+        
     }
 }

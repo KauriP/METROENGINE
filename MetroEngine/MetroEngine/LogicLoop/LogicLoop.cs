@@ -46,7 +46,6 @@ namespace MetroEngine
         {
             DoUpdate1();
             DoUpdate2();
-            DoUpdate3();
 
             drawLoop.TriggerDraw();
         }
@@ -67,13 +66,6 @@ namespace MetroEngine
                 component.Update2();
             }
         }
-
-        private void DoUpdate3()
-        {
-            foreach (UpdateComponent component in data.GetUpdateComponents())
-            {
-                component.Update3();
-            }
-        }
+        
     }
 }
