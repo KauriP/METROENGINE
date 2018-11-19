@@ -21,6 +21,10 @@ namespace MetroEngine
             offset = Vector2Int.Zero;
         }
 
-        
+        public IEnumerable<DrawLoop.DrawPixel> GetDraw()
+        {
+            //BGRA
+            yield return new DrawLoop.DrawPixel(new byte[] {255,0,255,0}, Vector2Int.Zero);
+        }
     }
 }

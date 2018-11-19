@@ -51,15 +51,21 @@ namespace MetroEngine
         {
             Console.WriteLine("Drawing...");
 
-
             //TESTAUSTA
             frames++;
             // draw using byte array
             int width = 300, height = 168, bytesperpixel = 3;
             int stride = width * bytesperpixel;
             byte[] imgdata = new byte[width * height * bytesperpixel];
-            
-            for (int row = 10; row < height; row++)
+
+            void SetPixel(DrawPixel drawPixel)
+            {
+                imgdata[drawPixel.viewPos.Y * stride * bytesperpixel + 0] = drawPixel.color[0];
+                imgdata[drawPixel.viewPos.Y * stride * bytesperpixel + 1] = drawPixel.color[1];
+                imgdata[drawPixel.viewPos.Y * stride * bytesperpixel + 2] = drawPixel.color[2];
+            }
+
+            /*for (int row = 10; row < height; row++)
             {
                 for (int col = 0; col < width; col++)
                 {
@@ -69,11 +75,14 @@ namespace MetroEngine
                     imgdata[row * stride + col * bytesperpixel + 2] = Convert.ToByte(col%byte.MaxValue);
                     //imgdata[row * stride + col * 4 + 3] = byte.MaxValue;
                 }
-            }
+            }*/
             
             foreach (DrawComponent component in data.GetDrawComponents())
             {
-                //component.Draw();
+                foreach(DrawPixel drawPixel in component.GetDraw())
+                {
+                    SetPixel(drawPixel);
+                }
             }
 
             //Actually drawing the image on screen
@@ -81,6 +90,18 @@ namespace MetroEngine
             BitmapSource image = BitmapSource.Create(width, height, 96, 96, PixelFormats.Bgr24, null, imgdata, stride);
             image.Freeze();
             mainWindow.Dispatcher.Invoke(() => mainWindow.UpdateImage(image));
+        }
+
+        public struct DrawPixel
+        {
+            public byte[] color;
+            public Vector2Int viewPos;
+            
+            public DrawPixel(byte[] color, Vector2Int viewPos)
+            {
+                this.color = color;
+                this.viewPos = viewPos;
+            }
         }
     }
 }

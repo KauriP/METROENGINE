@@ -105,6 +105,8 @@ namespace MetroEngine
             GameObject peliobjekti1 = new GameObject();
             UpdateComponent testiKomponentti = new TestBehaviour("Hello world!");
             peliobjekti1.AddComponent(testiKomponentti);
+            DrawComponent testiPiirto = new DrawComponent();
+            peliobjekti1.AddComponent(testiPiirto);
             data.AddGameObject(peliobjekti1);
             input.AddAxis("Testiakseli", System.Windows.Input.Key.B);
         }
