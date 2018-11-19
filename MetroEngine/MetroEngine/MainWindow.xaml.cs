@@ -33,8 +33,8 @@ namespace MetroEngine
         {
             engine = new Engine(this);
             //Input reactions
-            KeyDown += new KeyEventHandler(engine.input.ReactDown);
-            KeyUp += new KeyEventHandler(engine.input.ReactUp);
+            KeyDown += new KeyEventHandler(Engine.input.ReactDown);
+            KeyUp += new KeyEventHandler(Engine.input.ReactUp);
         }
 
         private void Window_KeyDown(object sender, KeyEventArgs e)

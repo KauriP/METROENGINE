@@ -24,7 +24,7 @@ namespace MetroEngine
         public IEnumerable<DrawLoop.DrawPixel> GetDraw()
         {
             //BGRA
-            yield return new DrawLoop.DrawPixel(new byte[] {255,0,255,0}, Vector2Int.Zero);
+            yield return new DrawLoop.DrawPixel(new byte[] {255,0,255,0}, Owner.transform.position + offset);
         }
     }
 }

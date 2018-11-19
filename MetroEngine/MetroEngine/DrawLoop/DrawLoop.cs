@@ -56,26 +56,14 @@ namespace MetroEngine
             // draw using byte array
             int width = 300, height = 168, bytesperpixel = 3;
             int stride = width * bytesperpixel;
-            byte[] imgdata = new byte[width * height * bytesperpixel];
+            byte[] imgdata = new byte[stride * height];
 
             void SetPixel(DrawPixel drawPixel)
             {
-                imgdata[drawPixel.viewPos.Y * stride * bytesperpixel + 0] = drawPixel.color[0];
-                imgdata[drawPixel.viewPos.Y * stride * bytesperpixel + 1] = drawPixel.color[1];
-                imgdata[drawPixel.viewPos.Y * stride * bytesperpixel + 2] = drawPixel.color[2];
+                imgdata[drawPixel.viewPos.Y * stride + bytesperpixel * drawPixel.viewPos.X + 0] = drawPixel.color[0];
+                imgdata[drawPixel.viewPos.Y * stride + bytesperpixel * drawPixel.viewPos.X + 1] = drawPixel.color[1];
+                imgdata[drawPixel.viewPos.Y * stride + bytesperpixel * drawPixel.viewPos.X + 2] = drawPixel.color[2];
             }
-
-            /*for (int row = 10; row < height; row++)
-            {
-                for (int col = 0; col < width; col++)
-                {
-                    // BGRA
-                    imgdata[row * stride + col * bytesperpixel + 0] = Convert.ToByte(byte.MaxValue * (row % 2));
-                    imgdata[row * stride + col * bytesperpixel + 1] = Convert.ToByte(frames%byte.MaxValue);
-                    imgdata[row * stride + col * bytesperpixel + 2] = Convert.ToByte(col%byte.MaxValue);
-                    //imgdata[row * stride + col * 4 + 3] = byte.MaxValue;
-                }
-            }*/
             
             foreach (DrawComponent component in data.GetDrawComponents())
             {

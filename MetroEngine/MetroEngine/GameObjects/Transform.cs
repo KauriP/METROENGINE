@@ -17,6 +17,11 @@ namespace MetroEngine
         }
 
         public static Vector2Int Zero { get { return new Vector2Int(0, 0); } }
+
+        public static Vector2Int operator +(Vector2Int a, Vector2Int b)
+        {
+            return new Vector2Int(a.X + b.X, a.Y + b.Y);
+        }
     }
 
     class Transform
@@ -38,6 +43,25 @@ namespace MetroEngine
             position.Y = (int)yf;
             subPosition.X = (float)(xf - position.X);
             subPosition.Y = (float)(yf - position.Y);
+        }
+
+
+        //Might not work yet
+        public void Translate(Vector2 move)
+        {
+            subPosition.X += move.X;
+            if (subPosition.X >= 1 || subPosition.X < 0)
+            {
+                position.X += (int)subPosition.X;
+                subPosition.X %= 1;
+            }
+
+            subPosition.Y += move.Y;
+            if (subPosition.Y >= 1 || subPosition.Y < 0)
+            {
+                position.Y += (int)subPosition.Y;
+                subPosition.Y %= 1;
+            }
         }
     }
 }

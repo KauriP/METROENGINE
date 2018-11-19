@@ -14,7 +14,7 @@ namespace MetroEngine
         /// <summary>Game window</summary>
         MainWindow mainWindow;
         /// <summary>Input manager</summary>
-        public InputManager input;
+        public static InputManager input;
         ///<summary>Timer for all loops</summary>
         Stopwatch loopTimer;
         ///<summary>Object and component lists etc.</summary>
