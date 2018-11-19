@@ -7,7 +7,7 @@ using System.Windows.Input;
 
 namespace MetroEngine
 {
-    class InputManager
+    public class InputManager
     {
 
         class InputAxis
@@ -32,6 +32,7 @@ namespace MetroEngine
             
             public void RDown(bool positive)
             {
+                Console.WriteLine("Axis pressed");
                 down = true;
 
                 if (positive)
@@ -49,6 +50,7 @@ namespace MetroEngine
 
             public void RUp(bool positive)
             {
+                Console.WriteLine("Axis released");
                 up = true;
 
                 if (positive)
@@ -67,13 +69,15 @@ namespace MetroEngine
         }
         Dictionary<string, InputAxis> axes = new Dictionary<string, InputAxis>();
 
-        public void AddAxes(string name, Key positive, Key negative = Key.None)
+        public void AddAxis(string name, Key positive, Key negative = Key.None)
         {
             axes.Add(name, new InputAxis(positive, negative));
         }
 
         public void ReactDown(object sender, KeyEventArgs e)
         {
+            if (e.IsRepeat) return;
+
             foreach (InputAxis axis in axes.Values)
             {
                 if (axis.positive == (e.Key)) axis.RDown(true);
@@ -83,6 +87,8 @@ namespace MetroEngine
 
         public void ReactUp(object sender, KeyEventArgs e)
         {
+            if (e.IsRepeat) return;
+
             foreach (InputAxis axis in axes.Values)
             {
                 if (axis.positive == (e.Key)) axis.RUp(true);

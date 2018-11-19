@@ -17,6 +17,7 @@ namespace MetroEngine
 
         MainWindow mainWindow;
 
+        //TESTAUSTA
         int frames;
 
         public DrawLoop(ref GameData data, ref MainWindow outImage)
