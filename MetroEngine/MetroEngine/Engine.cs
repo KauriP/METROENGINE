@@ -50,33 +50,33 @@ namespace MetroEngine
 
             loopTimer = new Stopwatch();
 
+            InitializeDrawLoop();
             InitializeLogicLoop();
-            //InitializeDrawLoop();
 
             StartLoops();
         }
 
         void InitializeLogicLoop()
         {
-            logicExitTokenSource = new CancellationTokenSource();
-            logicExitToken = logicExitTokenSource.Token;
             logicLoop = new LogicLoop(ref data, ref drawLoop);
 
+            logicExitTokenSource = new CancellationTokenSource();
+            logicExitToken = logicExitTokenSource.Token;
             logicTask = new Task(() => logicLoop.Infinite(ref loopTimer, 16.6667f, logicExitToken), logicExitToken, TaskCreationOptions.LongRunning);
 
             Console.WriteLine("Starting up logic loop.");
         }
 
-        //void InitializeDrawLoop()
-        //{
-        //    drawExitTokenSource = new CancellationTokenSource();
-        //    drawExitToken = drawExitTokenSource.Token;
-        //    drawLoop = new DrawLoop(ref data, ref mainWindow);
+        void InitializeDrawLoop()
+        {
+            drawLoop = new DrawLoop(ref data, ref mainWindow);
 
-        //    drawTask = new Task(() => drawLoop.Infinite(ref loopTimer, 16.6667f, drawExitToken), drawExitToken, TaskCreationOptions.LongRunning);
+            //drawExitTokenSource = new CancellationTokenSource();
+            //drawExitToken = drawExitTokenSource.Token;
+            //drawTask = new Task(() => drawLoop.Infinite(ref loopTimer, 16.6667f, drawExitToken), drawExitToken, TaskCreationOptions.LongRunning);
 
-        //    Console.WriteLine("Starting up drawing loop.");
-        //}
+            //Console.WriteLine("Starting up drawing loop.");
+        }
 
         public void ShutDown()
         {

@@ -15,12 +15,17 @@ namespace MetroEngine
             X = p1;
             Y = p2;
         }
+
+        public static Vector2Int Zero { get { return new Vector2Int(0, 0); } }
     }
 
     class Transform
     {
-        Vector2Int position;
-        Vector2 subPosition;
+        public Vector2Int position;
+        /// <summary>
+        /// Float 0-1; position within pixel
+        /// </summary>
+        public Vector2 subPosition;
 
         /// <summary>
         /// %4= 0 - up, 1 - right, 2 - down, 3 - left 
