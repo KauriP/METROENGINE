@@ -10,22 +10,18 @@ namespace MetroEngine
 {
     class LogicLoop
     {
-        TestNosing nosing;
-
         GameData data;
 
         public LogicLoop (ref GameData data)
         {
             this.data = data;
-
-            nosing = new TestNosing();
         }
 
         //tuo ref pitäisi olla in, mutta ei jonkin takia toimi (ref, in, out)
-        public void Infinite(ref Stopwatch timer, float interval, CancellationToken cancellationToken)
+        public void Infinite(ref Stopwatch timer, float interval)
         {
             Console.WriteLine("Infinite logic loop started");
-            while(!cancellationToken.IsCancellationRequested)
+            while(true)
             {
                 //vähäsen huono tapa ehkä
                 //while (0.01f < timer.Elapsed.TotalMilliseconds % interval && timer.Elapsed.TotalMilliseconds % interval < interval-0.01f);
@@ -43,7 +39,7 @@ namespace MetroEngine
             {
                 component.Update1();
             }
-            Console.WriteLine("Done update1. Interval was {0}.", nosing.CheckElapsedTime1());
+            Console.WriteLine("Done update1. Interval was {0}.", Program.nosing.CheckElapsedTime1());
         }
 
         private void DoUpdate2()

@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace MetroEngine
 {
-    /*class InputManager
+    class InputManager
     {
 
         class InputAxis
@@ -15,17 +16,16 @@ namespace MetroEngine
             private bool positiveheld;
             private bool negativeheld;
             private bool up;
-            private static float value;
+            private float value;
             public Keys positive;
             public Keys negative;
 
             
 
-            public static float GetValue()
+            public static getValue()
             {
-                float result = 0;
-                result = InputAxis.value;
-                return result;
+               
+                return InputAxis.value;
 
 
             }
@@ -89,5 +89,5 @@ namespace MetroEngine
             }
 
         }
-    }*/
+    }
 }
