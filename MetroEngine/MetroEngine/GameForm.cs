@@ -15,7 +15,7 @@ namespace MetroEngine
         public GameForm()
         {
             InitializeComponent();
-            DebugDraw(new Bitmap("C:/Users/kauri/Desktop/LowResTest.png"));
+           // DebugDraw(new Bitmap("C:/Users/kauri/Desktop/LowResTest.png"));
         }
 
         private void GameForm_FormClosed(object sender, FormClosedEventArgs e)
@@ -29,14 +29,18 @@ namespace MetroEngine
         }
 
 
-        private void GameForm_KeyUp(object sender, KeyEventArgs e)
-        {
-            throw new NotImplementedException();
-        }
-
         private void GameForm_KeyDown(object sender, KeyEventArgs e)
         {
-            throw new NotImplementedException();
+            Keys KeyCode = e.KeyCode;
+            var instance = new InputManager();
+            instance.ReactDown();
+        }
+
+        private void GameForm_KeyUp(object sender, KeyEventArgs e)
+        {
+            Keys KeyCode = e.KeyCode;
+            var instance = new InputManager();
+            instance.ReactUp();
         }
 
     }
