@@ -14,7 +14,7 @@ namespace MetroEngine
             this.message = message;
         }
 
-        override public void Update1()
+        override public void Update()
         {
             Console.WriteLine("TestBehaviour update1 done! It said \"{0}\"",message);
         }

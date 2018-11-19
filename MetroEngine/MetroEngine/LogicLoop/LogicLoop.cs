@@ -44,26 +44,26 @@ namespace MetroEngine
 
         private void DoCycle()
         {
-            DoUpdate1();
-            DoUpdate2();
+            DoUpdate();
+            DoLateUpdate();
 
             drawLoop.TriggerDraw();
         }
 
-        private void DoUpdate1()
+        private void DoUpdate()
         {
             foreach(UpdateComponent component in data.GetUpdateComponents())
             {
-                component.Update1();
+                component.Update();
             }
             Console.WriteLine("Done update1. Interval was {0}.", nosing.CheckElapsedTime1());
         }
 
-        private void DoUpdate2()
+        private void DoLateUpdate()
         {
             foreach (UpdateComponent component in data.GetUpdateComponents())
             {
-                component.Update2();
+                component.LateUpdate();
             }
         }
         
