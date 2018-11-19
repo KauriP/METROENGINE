@@ -22,11 +22,10 @@ namespace MetroEngine
 
             
 
-            public static getValue()
+            public float Value()
             {
                
                 return InputAxis.value;
-
 
             }
             public void RDown(bool positive)
