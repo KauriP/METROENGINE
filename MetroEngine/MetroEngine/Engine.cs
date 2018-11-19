@@ -26,13 +26,13 @@ namespace MetroEngine
         Task logicTask;
         LogicLoop logicLoop;
 
-        ///Drawing looping taks
-        CancellationTokenSource drawExitTokenSource;
-        CancellationToken drawExitToken;
-        Task drawTask;
+        /////Drawing looping taks
+        //CancellationTokenSource drawExitTokenSource;
+        //CancellationToken drawExitToken;
+        //Task drawTask;
         DrawLoop drawLoop;
 
-
+        //Siirretään piirtäminen LogicLooppiin
 
         
         public Engine(MainWindow outImage)
@@ -51,32 +51,32 @@ namespace MetroEngine
             loopTimer = new Stopwatch();
 
             InitializeLogicLoop();
-            InitializeDrawLoop();
+            //InitializeDrawLoop();
 
-            //StartLoops();
+            StartLoops();
         }
 
         void InitializeLogicLoop()
         {
             logicExitTokenSource = new CancellationTokenSource();
             logicExitToken = logicExitTokenSource.Token;
-            logicLoop = new LogicLoop(ref data);
+            logicLoop = new LogicLoop(ref data, ref drawLoop);
 
             logicTask = new Task(() => logicLoop.Infinite(ref loopTimer, 16.6667f, logicExitToken), logicExitToken, TaskCreationOptions.LongRunning);
 
             Console.WriteLine("Starting up logic loop.");
         }
 
-        void InitializeDrawLoop()
-        {
-            drawExitTokenSource = new CancellationTokenSource();
-            drawExitToken = drawExitTokenSource.Token;
-            drawLoop = new DrawLoop(ref data, ref mainWindow);
+        //void InitializeDrawLoop()
+        //{
+        //    drawExitTokenSource = new CancellationTokenSource();
+        //    drawExitToken = drawExitTokenSource.Token;
+        //    drawLoop = new DrawLoop(ref data, ref mainWindow);
 
-            drawTask = new Task(() => drawLoop.Infinite(ref loopTimer, 16.6667f, drawExitToken), drawExitToken, TaskCreationOptions.LongRunning);
+        //    drawTask = new Task(() => drawLoop.Infinite(ref loopTimer, 16.6667f, drawExitToken), drawExitToken, TaskCreationOptions.LongRunning);
 
-            Console.WriteLine("Starting up drawing loop.");
-        }
+        //    Console.WriteLine("Starting up drawing loop.");
+        //}
 
         public void ShutDown()
         {
@@ -88,14 +88,14 @@ namespace MetroEngine
             loopTimer.Start();
 
             logicTask.Start();
-            drawTask.Start();
+            //drawTask.Start();
         }
 
         //pitäis implementoida
         void StopLoops()
         {
             logicExitTokenSource.Cancel();
-            drawExitTokenSource.Cancel();
+            //drawExitTokenSource.Cancel();
         }
 
         

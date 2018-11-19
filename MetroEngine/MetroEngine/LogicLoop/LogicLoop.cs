@@ -13,10 +13,12 @@ namespace MetroEngine
         TestNosing nosing;
 
         GameData data;
+        DrawLoop drawLoop;
 
-        public LogicLoop (ref GameData data)
+        public LogicLoop (ref GameData data, ref DrawLoop drawLoop)
         {
             this.data = data;
+            this.drawLoop = drawLoop;
 
             nosing = new TestNosing();
         }
@@ -29,12 +31,24 @@ namespace MetroEngine
             {
                 //vähäsen huono tapa ehkä
                 //while (0.01f < timer.Elapsed.TotalMilliseconds % interval && timer.Elapsed.TotalMilliseconds % interval < interval-0.01f);
-                DoUpdate1();
+
+
+                DoCycle();
+
 
                 //pitäisi saada tämä hoitamaan ajoitus
                 Thread.Sleep(1+(int)(interval - ((timer.Elapsed.TotalMilliseconds-1000) % interval)));
                 //Thread.Sleep(1);
             }
+        }
+
+        private void DoCycle()
+        {
+            DoUpdate1();
+            DoUpdate2();
+            DoUpdate3();
+
+            drawLoop.TriggerDraw();
         }
 
         private void DoUpdate1()
