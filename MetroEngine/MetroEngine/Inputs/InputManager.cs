@@ -71,22 +71,23 @@ namespace MetroEngine
         {
             axes.Add(name, new InputAxis(positive, negative));
         }
-
-        public void ReactDown(object sender, KeyEventArgs e)
+        public Key KeyCode = 0;
+        public void ReactDown()
         {
             foreach (InputAxis axis in axes.Values)
             {
-                if (axis.positive == (e.Key)) axis.RDown(true);
-                if (axis.negative == (e.Key)) axis.RDown(false);
+                if (axis.positive == KeyCode) axis.RDown(true);
+                if (axis.negative == KeyCode) axis.RDown(false);
             }
+            if (KeyCode == 0) Console.WriteLine("rikki");
         }
 
-        public void ReactUp(object sender, KeyEventArgs e)
+        public void ReactUp()
         {
             foreach (InputAxis axis in axes.Values)
             {
-                if (axis.positive == (e.Key)) axis.RUp(true);
-                if (axis.negative == (e.Key)) axis.RUp(false);
+                if (axis.positive == KeyCode) axis.RUp(true);
+                if (axis.negative == KeyCode) axis.RUp(false);
             }
 
         }

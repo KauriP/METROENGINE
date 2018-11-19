@@ -32,18 +32,30 @@ namespace MetroEngine
 
         private void Window_KeyDown(object sender, KeyEventArgs e)
         {
-            Console.WriteLine("Testi");
-            if(e.Key == Key.F)
+            Key KeyCode = e.Key;
+            var instance = new InputManager();
+            instance.ReactDown();
+
+            if (e.Key == Key.F)
             {
-                if(WindowStyle == WindowStyle.None)
+                if (WindowStyle == WindowStyle.None)
                 {
                     WindowStyle = WindowStyle.SingleBorderWindow;
-                } else
+                }
+                else
                 {
                     WindowStyle = WindowStyle.None;
                 }
             }
         }
+
+        private void Window_KeyUp(object sender, KeyEventArgs e)
+        {
+            Key KeyCode = e.Key;
+            var instance = new InputManager();
+            instance.ReactUp();
+        }
+        
 
         public void UpdateImage(BitmapSource bitmap)
         {
