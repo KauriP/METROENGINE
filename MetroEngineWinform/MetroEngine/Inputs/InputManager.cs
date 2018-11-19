@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Input;
+using System.Windows.Forms;
 
 namespace MetroEngine
 {
@@ -13,40 +13,36 @@ namespace MetroEngine
         class InputAxis
         {
             private bool down;
-            private bool up;
-            private float value;
             private bool positiveheld;
             private bool negativeheld;
-            public Key positive;
-            public Key negative;
+            private bool up;
+            private float value;
+            public Keys positive;
+            public Keys negative;
 
-            public float Value { get; }
-            public bool Up { get; }
-            public bool Down { get; }
-
-            public InputAxis(Key positive, Key negative)
-            {
-                this.positive = positive;
-                this.negative = negative;
-            }
             
+
+            public float Value()
+            {
+               
+                return value;
+
+            }
             public void RDown(bool positive)
             {
                 down = true;
-
-                if (positive)
+                
+                if(positive)
                 {
                     value += 1;
                     positiveheld = true;
-                }
-                else
+                } else
                 {
                     value -= 1;
                     negativeheld = true;
 
                 }
             }
-
             public void RUp(bool positive)
             {
                 up = true;
@@ -56,37 +52,39 @@ namespace MetroEngine
                     positiveheld = false;
                     value -= 1;
 
-                }
-                else
+                }else
                 {
                     negativeheld = false;
                     value += 1;
 
                 }
+
+
             }
         }
         Dictionary<string, InputAxis> axes = new Dictionary<string, InputAxis>();
 
-        public void AddAxes(string name, Key positive, Key negative = Key.None)
+        public void AddAxes()
         {
-            axes.Add(name, new InputAxis(positive, negative));
+            axes.Add("nimi", new InputAxis());
+        
+        
+        
         }
-
         public void ReactDown(object sender, KeyEventArgs e)
         {
-            foreach (InputAxis axis in axes.Values)
+            foreach ( InputAxis axis in axes.Values)
             {
-                if (axis.positive == (e.Key)) axis.RDown(true);
-                if (axis.negative == (e.Key)) axis.RDown(false);
+                if (axis.positive == (e.KeyCode)) axis.RDown(true);
+                if (axis.negative == (e.KeyCode)) axis.RDown(false);
             }
         }
-
         public void ReactUp(object sender, KeyEventArgs e)
         {
             foreach (InputAxis axis in axes.Values)
             {
-                if (axis.positive == (e.Key)) axis.RUp(true);
-                if (axis.negative == (e.Key)) axis.RUp(false);
+                if (axis.positive == (e.KeyCode)) axis.RUp(true);
+                if (axis.negative == (e.KeyCode)) axis.RUp(false);
             }
 
         }

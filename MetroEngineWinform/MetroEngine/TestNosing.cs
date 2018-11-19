@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Diagnostics;
+using System.Windows.Forms;
 using System.Drawing;
 
 namespace MetroEngine
@@ -15,10 +16,13 @@ namespace MetroEngine
     class TestNosing
     {
         private Stopwatch timingTimer1;
+        public GameForm form;
+        Bitmap image;
         public TestNosing()
         {
             timingTimer1 = new Stopwatch();
             timingTimer1.Start();
+            image = new Bitmap(26, 26);
         }
         public float CheckElapsedTime1()
         {
