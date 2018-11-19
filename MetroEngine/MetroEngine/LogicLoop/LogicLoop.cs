@@ -47,7 +47,7 @@ namespace MetroEngine
             DoUpdate();
             DoLateUpdate();
 
-            drawLoop.TriggerDraw();
+           drawLoop.TriggerDraw();
         }
 
         private void DoUpdate()

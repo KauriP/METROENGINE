@@ -12,7 +12,7 @@ namespace MetroEngine
     public class Engine
     {
         /// <summary>Game window</summary>
-        MainWindow mainWindow;
+        public MainWindow mainWindow;
         /// <summary>Input manager</summary>
         public InputManager input;
         ///<summary>Timer for all loops</summary>
@@ -47,7 +47,7 @@ namespace MetroEngine
             input = new InputManager();
 
             Testaus();
-
+            input.AddAxis("testi",System.Windows.Input.Key.A,System.Windows.Input.Key.D);
             loopTimer = new Stopwatch();
 
             InitializeLogicLoop();

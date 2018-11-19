@@ -35,6 +35,7 @@ namespace MetroEngine
             //Input reactions
             KeyDown += new KeyEventHandler(engine.input.ReactDown);
             KeyUp += new KeyEventHandler(engine.input.ReactUp);
+            MouseLeftButtonDown += new MouseButtonEventHandler(engine.input.ReactMouse);
         }
 
         private void Window_KeyDown(object sender, KeyEventArgs e)

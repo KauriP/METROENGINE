@@ -4,12 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using System.Diagnostics;
 
 namespace MetroEngine
 {
     public class InputManager
     {
-
+        //every axis has these
         class InputAxis
         {
             private bool down;
@@ -67,13 +68,14 @@ namespace MetroEngine
                 }
             }
         }
+        //list of all axis that exist with their keys
         Dictionary<string, InputAxis> axes = new Dictionary<string, InputAxis>();
 
         public void AddAxis(string name, Key positive, Key negative = Key.None)
         {
             axes.Add(name, new InputAxis(positive, negative));
         }
-        
+        //reactions to user events
         public void ReactDown(object sender, KeyEventArgs e)
         {
             if (e.IsRepeat) return;
@@ -95,6 +97,13 @@ namespace MetroEngine
                 if (axis.positive == e.Key) axis.RUp(true);
                 if (axis.negative == e.Key) axis.RUp(false);
             }
+
+        }
+        //mouse
+
+        public void ReactMouse(object sender, MouseEventArgs e)
+        {
+
 
         }
     }
