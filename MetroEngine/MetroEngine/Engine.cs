@@ -11,14 +11,10 @@ namespace MetroEngine
 {
     public class Engine
     {
-        /*
-         Input input;
-         Luokka, josta voisi saada näppäinten, näppäimistä tehtyjen akselien(, ja mahdollisesti vielä niistä prosessoitujen toimintojen) arvot
-         +hiiri
-        */
-        /// <summary>Input manager</summary>
-        //InputManager input;
         /// <summary>Game window</summary>
+        MainWindow mainWindow;
+        /// <summary>Input manager</summary>
+        public InputManager input;
         ///<summary>Timer for all loops</summary>
         Stopwatch loopTimer;
         ///<summary>Object and component lists etc.</summary>
@@ -36,7 +32,6 @@ namespace MetroEngine
         Task drawTask;
         DrawLoop drawLoop;
 
-        MainWindow mainWindow;
 
 
         
@@ -49,6 +44,7 @@ namespace MetroEngine
         void StartUp()
         {
             data = new GameData();
+            input = new InputManager();
 
             Testaus();
 
@@ -57,7 +53,7 @@ namespace MetroEngine
             InitializeLogicLoop();
             InitializeDrawLoop();
 
-            StartLoops();
+            //StartLoops();
         }
 
         void InitializeLogicLoop()
@@ -110,6 +106,7 @@ namespace MetroEngine
             UpdateComponent testiKomponentti = new TestBehaviour("Hello world!");
             peliobjekti1.AddComponent(testiKomponentti);
             data.AddGameObject(peliobjekti1);
+            input.AddAxis("Testiakseli", System.Windows.Input.Key.B);
         }
     }
 }

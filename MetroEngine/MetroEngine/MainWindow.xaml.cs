@@ -25,37 +25,31 @@ namespace MetroEngine
         public MainWindow()
         {
             InitializeComponent();
-            //bitmap = new WriteableBitmap(300, 168, 96, 96, PixelFormats.Bgra32, null);
             RenderOptions.SetBitmapScalingMode(outImage, BitmapScalingMode.NearestNeighbor);
+            InitializeEngine();
+        }
+
+        private void InitializeEngine()
+        {
             engine = new Engine(this);
+            //Input reactions
+            KeyDown += new KeyEventHandler(engine.input.ReactDown);
+            KeyUp += new KeyEventHandler(engine.input.ReactUp);
         }
 
         private void Window_KeyDown(object sender, KeyEventArgs e)
         {
-            Key KeyCode = e.Key;
-            var instance = new InputManager();
-            instance.ReactDown();
-
-            if (e.Key == Key.F)
+            if(!e.IsRepeat && e.Key == Key.F)
             {
-                if (WindowStyle == WindowStyle.None)
+                if(WindowStyle == WindowStyle.None)
                 {
                     WindowStyle = WindowStyle.SingleBorderWindow;
-                }
-                else
+                } else
                 {
                     WindowStyle = WindowStyle.None;
                 }
             }
         }
-
-        private void Window_KeyUp(object sender, KeyEventArgs e)
-        {
-            Key KeyCode = e.Key;
-            var instance = new InputManager();
-            instance.ReactUp();
-        }
-        
 
         public void UpdateImage(BitmapSource bitmap)
         {
