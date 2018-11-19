@@ -63,7 +63,6 @@
     <Compile Include="GameObjects\Components\UpdateComponent.cs" />
     <Compile Include="GameObjects\GameObject.cs" />
     <Compile Include="GameObjects\Transform.cs" />
-    <Compile Include="Inputs\InputKeys.cs" />
     <Compile Include="Inputs\InputManager.cs" />
     <Compile Include="LogicLoop\LogicLoop.cs" />
     <Compile Include="Physics\Physics.cs" />

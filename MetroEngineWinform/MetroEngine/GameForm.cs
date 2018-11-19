@@ -15,7 +15,7 @@ namespace MetroEngine
         public GameForm()
         {
             InitializeComponent();
-            DebugDraw(new Bitmap("C:/Users/kauri/Desktop/LowResTest.png"));
+            //DebugDraw(new Bitmap("C:/Users/kauri/Desktop/LowResTest.png"));
         }
 
         private void GameForm_FormClosed(object sender, FormClosedEventArgs e)

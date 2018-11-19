@@ -25,7 +25,7 @@ namespace MetroEngine
             public float Value()
             {
                
-                return InputAxis.value;
+                return value;
 
             }
             public void RDown(bool positive)

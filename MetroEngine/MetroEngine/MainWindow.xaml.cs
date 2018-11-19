@@ -33,12 +33,15 @@ namespace MetroEngine
         private void Window_KeyDown(object sender, KeyEventArgs e)
         {
             Console.WriteLine("Testi");
-            if(WindowStyle == WindowStyle.None)
+            if(e.Key == Key.F)
             {
-                WindowStyle = WindowStyle.SingleBorderWindow;
-            } else
-            {
-                WindowStyle = WindowStyle.None;
+                if(WindowStyle == WindowStyle.None)
+                {
+                    WindowStyle = WindowStyle.SingleBorderWindow;
+                } else
+                {
+                    WindowStyle = WindowStyle.None;
+                }
             }
         }
 
