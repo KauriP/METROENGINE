@@ -47,7 +47,7 @@ namespace MetroEngine
             input = new InputManager();
 
             Testaus();
-            input.AddAxis("testi",System.Windows.Input.Key.A,System.Windows.Input.Key.D);
+
             loopTimer = new Stopwatch();
 
             InitializeDrawLoop();
@@ -102,11 +102,13 @@ namespace MetroEngine
         //TESTAUSTA
         void Testaus()
         {
+            input.AddAxis("testi", System.Windows.Input.Key.A, System.Windows.Input.Key.D);
             GameObject peliobjekti1 = new GameObject();
             UpdateComponent testiKomponentti = new TestBehaviour("Hello world!");
             peliobjekti1.AddComponent(testiKomponentti);
-            DrawComponent testiPiirto = new DrawComponent();
-            peliobjekti1.AddComponent(testiPiirto);
+            //Nyt ei kaadu välittömästi
+            //DrawComponent testiPiirto = new DrawComponent();
+            //peliobjekti1.AddComponent(testiPiirto);
             data.AddGameObject(peliobjekti1);
             input.AddAxis("Testiakseli", System.Windows.Input.Key.B);
         }
