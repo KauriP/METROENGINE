@@ -57,6 +57,7 @@
     </ApplicationDefinition>
     <Compile Include="DevComponents\TestBehaviour.cs" />
     <Compile Include="DrawLoop\DrawLoop.cs" />
+    <Compile Include="DrawLoop\Texture.cs" />
     <Compile Include="GameObjects\Component.cs" />
     <Compile Include="GameObjects\Components\DrawComponent.cs" />
     <Compile Include="GameObjects\Components\PhysicsComponent.cs" />
