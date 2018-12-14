@@ -47,6 +47,9 @@ namespace MetroEngine
             Draw();
         }
 
+        /// <summary>
+        /// Outdated testing
+        /// </summary>
         private void Draw()
         {
             Console.WriteLine("Drawing...");

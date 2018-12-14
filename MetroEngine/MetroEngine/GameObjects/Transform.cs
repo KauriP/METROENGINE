@@ -22,6 +22,11 @@ namespace MetroEngine
         {
             return new Vector2Int(a.X + b.X, a.Y + b.Y);
         }
+
+        public bool IsIn(Vector2Int bound)
+        {
+            return (X >= 0 && X < bound.X && Y >= 0 && Y < bound.Y) ;
+        }
     }
 
     class Transform
